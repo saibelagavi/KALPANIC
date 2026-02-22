@@ -163,12 +163,12 @@ export function Hero() {
       padding: '6rem 2rem 5rem',
       position: 'relative',
       overflow: 'hidden',
-      background: '#0e0a06',
+      background: 'var(--color-bg)',
     }}>
       {/* Outer dot texture */}
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: `radial-gradient(circle, rgba(214,58,26,0.12) 1px, transparent 1px)`,
+        backgroundImage: `radial-gradient(circle, rgba(214,58,26,0.15) 1px, transparent 1px)`,
         backgroundSize: '32px 32px',
         pointerEvents: 'none', zIndex: 0,
       }} />
@@ -176,7 +176,7 @@ export function Hero() {
       {/* Vignette */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 20%, #0e0a06 80%)',
+        background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 20%, var(--color-bg) 80%)',
         pointerEvents: 'none', zIndex: 0,
       }} />
 
@@ -197,7 +197,7 @@ export function Hero() {
         style={{
           position: 'relative', zIndex: 2,
           maxWidth: '900px', width: '100%',
-          background: 'rgba(245,237,224,0.03)',
+          background: 'rgba(255,253,248,0.75)',
           border: '1.5px solid rgba(214,58,26,0.35)',
           borderRadius: '8px',
           padding: 'clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem)',
@@ -209,8 +209,8 @@ export function Hero() {
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: `
-            linear-gradient(rgba(214,58,26,0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(214,58,26,0.06) 1px, transparent 1px)
+            linear-gradient(rgba(214,58,26,0.09) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(214,58,26,0.09) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
           pointerEvents: 'none', zIndex: 0, borderRadius: '8px',

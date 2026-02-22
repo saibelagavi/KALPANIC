@@ -3,30 +3,30 @@
    Roman Empire × 2026 GenZ Edition
    ===================================================== */
 
-/* ── IMPERIUM (default) — Dark warm, red-orange, brutal editorial ── */
+/* ── IMPERIUM (default) — Cream warm, red-orange, brutal editorial ── */
 :root,
 [data-theme="imperium"] {
-  --color-bg: #0e0a06;
-  --color-bg-2: #160e07;
-  --color-bg-3: #1e1409;
-  --color-surface: #1a1108;
-  --color-surface-2: #251808;
-  --color-border: #3d2510;
-  --color-border-2: #5c3818;
+  --color-bg: #f5ede0;
+  --color-bg-2: #ede3ce;
+  --color-bg-3: #e3d8bc;
+  --color-surface: #faf8f3;
+  --color-surface-2: #f0e8d8;
+  --color-border: #d5c4a8;
+  --color-border-2: #bfa888;
 
-  --color-text: #f5ede0;
-  --color-text-2: #c8a882;
-  --color-text-3: #8a6845;
+  --color-text: #1a0d05;
+  --color-text-2: #5c3820;
+  --color-text-3: #9a6840;
 
   --color-accent: #d63a1a;
   --color-accent-2: #ff5c2a;
-  --color-accent-glow: rgba(214, 58, 26, 0.35);
+  --color-accent-glow: rgba(214, 58, 26, 0.25);
 
   --color-amber: #e8890a;
   --color-cream: #f5ede0;
   --color-highlight: #e8890a;
-  --color-success: #42c88f;
-  --color-error: #ff4040;
+  --color-success: #1a7a50;
+  --color-error: #c83030;
 
   --font-display: 'Anton', 'Impact', sans-serif;
   --font-serif: 'Fraunces', Georgia, serif;
@@ -39,10 +39,10 @@
   --radius-xl: 12px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.6);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,0.7);
-  --shadow-accent: 0 0 40px rgba(214, 58, 26, 0.25);
+  --shadow-sm: 0 1px 3px rgba(80,40,0,0.10);
+  --shadow-md: 0 4px 16px rgba(80,40,0,0.13);
+  --shadow-lg: 0 8px 40px rgba(80,40,0,0.16);
+  --shadow-accent: 0 0 40px rgba(214, 58, 26, 0.18);
 
   --motion-fast: 150ms;
   --motion-base: 250ms;
