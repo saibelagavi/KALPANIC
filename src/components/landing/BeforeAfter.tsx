@@ -11,7 +11,6 @@ export function BeforeAfter() {
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Section label */}
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -27,7 +26,7 @@ export function BeforeAfter() {
               lineHeight: 1,
               letterSpacing: '-0.02em',
               userSelect: 'none',
-            }}>01</span>
+            }}>02</span>
             <h2 style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(2rem, 5vw, 3.5rem)',
@@ -37,7 +36,7 @@ export function BeforeAfter() {
               textTransform: 'uppercase',
               margin: 0,
             }}>
-              THE DIFFERENCE
+              THE TRANSFORMATION
             </h2>
           </div>
           <p style={{
@@ -48,7 +47,7 @@ export function BeforeAfter() {
             maxWidth: '480px',
             marginLeft: 'calc(clamp(4rem, 10vw, 7rem) + 1.5rem)',
           }}>
-            Same content. Completely different reaction.
+            From static files to dynamic playbooks. Same content — completely different impact.
           </p>
         </motion.div>
 
@@ -88,13 +87,13 @@ export function BeforeAfter() {
               <span style={{ fontSize: '0.65rem', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-body)', fontWeight: 700, textTransform: 'uppercase' }}>Before</span>
             </div>
 
-            <div style={{ marginTop: '2.5rem', fontFamily: 'Arial, sans-serif' }}>
+            <div style={{ marginTop: '2.5rem', fontFamily: 'Arial, sans-serif', position: 'relative' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#aaa', marginBottom: '1rem' }}>
-                Q3 Onboarding SOP v2.3 FINAL (2).docx
+                product_onboarding_v3_FINAL(2).docx
               </div>
               <div style={{ borderLeft: '3px solid #444', paddingLeft: '1rem', marginBottom: '1rem' }}>
                 <p style={{ fontSize: '0.8rem', color: '#777', lineHeight: 1.85 }}>
-                  1. First, the new employee must complete the HR checklist which can be found in the shared drive under /HR/Onboarding/2024/Templates/Checklist_v2...
+                  Step 1: The employee must complete the mandatory compliance training module which is available at the following internal URL: https://internal.company.com/hr/training/compliance/2024/mandatory-all-staff...
                 </p>
               </div>
               {[...Array(4)].map((_, i) => (
@@ -104,6 +103,16 @@ export function BeforeAfter() {
                 <p style={{ fontSize: '0.7rem', color: '#666', lineHeight: 1.7 }}>
                   NOTE: Please see attachment B for the system access form. Also refer to slide 23 of the presentation from the Q2 all-hands for context on the broader strategy.
                 </p>
+              </div>
+              <div style={{
+                position: 'absolute',
+                bottom: '0.5rem',
+                right: '0.5rem',
+                fontSize: '1.25rem',
+                opacity: 0.4,
+                userSelect: 'none',
+              }}>
+                😴
               </div>
             </div>
           </motion.div>
@@ -141,6 +150,7 @@ export function BeforeAfter() {
               border: '1px solid rgba(214,58,26,0.4)',
               padding: '0.3rem 0.875rem',
               borderRadius: '2px',
+              whiteSpace: 'nowrap',
             }}>
               <span style={{ fontSize: '0.65rem', letterSpacing: '0.12em', color: 'var(--color-accent)', fontFamily: 'var(--font-body)', fontWeight: 700, textTransform: 'uppercase' }}>After — Kalpanic</span>
             </div>
@@ -151,15 +161,15 @@ export function BeforeAfter() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
                 <div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--color-text)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Your First 30 Days</div>
-                  <div style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '0.75rem', color: 'var(--color-text-2)' }}>Welcome to the team</div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--color-text)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Aurora Launch — Product Playbook</div>
+                  <div style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '0.75rem', color: 'var(--color-text-2)' }}>Go-to-market strategy</div>
                 </div>
               </div>
 
               {[
-                { num: '01', title: 'Setup & Access', color: '#d63a1a', done: true },
-                { num: '02', title: 'Meet the Team', color: '#e8890a', done: true },
-                { num: '03', title: 'First Project', color: '#ff5c2a', done: false },
+                { num: '01', title: 'Market Research', color: '#d63a1a', done: true },
+                { num: '02', title: 'Launch Strategy', color: '#e8890a', done: true },
+                { num: '03', title: 'Distribution', color: '#ff5c2a', done: false },
               ].map((step, i) => (
                 <motion.div
                   key={i}
@@ -179,9 +189,11 @@ export function BeforeAfter() {
                   }}
                 >
                   <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.7rem', color: step.color, letterSpacing: '0.05em', flexShrink: 0 }}>{step.num}</span>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', fontWeight: 600, color: step.done ? 'var(--color-text)' : 'var(--color-text-3)' }}>{step.title}</span>
-                  {step.done && (
-                    <svg style={{ marginLeft: 'auto', flexShrink: 0, color: step.color }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', fontWeight: 600, color: step.done ? 'var(--color-text)' : 'var(--color-text-3)', flex: 1 }}>{step.title}</span>
+                  {step.done ? (
+                    <svg style={{ flexShrink: 0, color: step.color }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  ) : (
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: step.color, letterSpacing: '0.08em', textTransform: 'uppercase', flexShrink: 0 }}>In progress</span>
                   )}
                 </motion.div>
               ))}

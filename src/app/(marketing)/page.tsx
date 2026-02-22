@@ -1,4 +1,5 @@
 import { Hero } from "@/components/landing/Hero";
+import { Problem } from "@/components/landing/Problem";
 import { BeforeAfter } from "@/components/landing/BeforeAfter";
 import { PersonaShowcase } from "@/components/landing/PersonaShowcase";
 import { HowItWorks } from "@/components/landing/HowItWorks";
@@ -11,6 +12,7 @@ export default function LandingPage() {
   return (
     <>
       <Hero />
+      <Problem />
       <BeforeAfter />
       <PersonaShowcase />
       <HowItWorks />

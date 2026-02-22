@@ -39,88 +39,91 @@ export function CTA() {
 
       <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
 
-        {/* Section label */}
+        {/* Headline */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '0.75rem',
-            letterSpacing: '0.2em',
-            color: 'var(--color-accent)',
-            textTransform: 'uppercase',
-            marginBottom: '2rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1rem',
-          }}
-        >
-          <span style={{ display: 'block', width: '40px', height: '1px', background: 'var(--color-accent)' }} />
-          The Manifesto
-          <span style={{ display: 'block', width: '40px', height: '1px', background: 'var(--color-accent)' }} />
-        </motion.div>
-
-        {/* Headline line 1 */}
-        <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          style={{
+          style={{ marginBottom: '3rem' }}
+        >
+          <p style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(3rem, 9vw, 7rem)',
-            fontWeight: 400,
-            lineHeight: 0.95,
-            letterSpacing: '-0.01em',
-            textTransform: 'uppercase',
-            marginBottom: '1rem',
+            fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
             color: 'var(--color-text)',
-          }}
-        >
-          THE BORING
-        </motion.h2>
-
-        {/* Headline line 2 (red) */}
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          style={{
+            opacity: 0.4,
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+            marginBottom: '0.25rem',
+          }}>
+            OLD DOCUMENTATION
+          </p>
+          <h2 style={{
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(3rem, 9vw, 7rem)',
             fontWeight: 400,
             lineHeight: 0.95,
             letterSpacing: '-0.01em',
             textTransform: 'uppercase',
-            marginBottom: '3rem',
+            marginBottom: '0.5rem',
+            color: 'var(--color-text)',
+          }}>
+            EXPLAINS.
+          </h2>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(3rem, 9vw, 7rem)',
+            fontWeight: 400,
+            lineHeight: 0.95,
+            letterSpacing: '-0.01em',
+            textTransform: 'uppercase',
+            marginBottom: '0',
             color: 'var(--color-accent)',
-            WebkitTextStroke: '1px var(--color-accent)',
-          }}
-        >
-          ENDS HERE.
-        </motion.h2>
+          }}>
+            KALPANIC
+          </h2>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(3rem, 9vw, 7rem)',
+            fontWeight: 400,
+            lineHeight: 0.95,
+            letterSpacing: '-0.01em',
+            textTransform: 'uppercase',
+            marginBottom: '0',
+            color: 'var(--color-accent)',
+          }}>
+            DEMONSTRATES.
+          </h2>
+        </motion.div>
 
-        <motion.p
+        {/* 3-column manifesto */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.25 }}
+          transition={{ delay: 0.2 }}
           style={{
-            fontFamily: 'var(--font-serif)',
-            fontStyle: 'italic',
-            fontSize: '1.15rem',
-            color: 'var(--color-text-2)',
-            maxWidth: '500px',
-            margin: '0 auto 3.5rem',
-            lineHeight: 1.65,
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '1px',
+            background: 'var(--color-border)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '4px',
+            overflow: 'hidden',
+            marginBottom: '3.5rem',
           }}
         >
-          Join the early access cohort. First three playbooks free.
-          No credit card. No friction. Just extraordinary.
-        </motion.p>
+          {[
+            { old: 'Old procedures instruct.', new: 'KALPANIC visualizes.' },
+            { old: 'Old lessons inform.', new: 'KALPANIC transforms.' },
+            { old: 'Old docs collect dust.', new: 'KALPANIC converts.' },
+          ].map((item, i) => (
+            <div key={i} style={{ background: 'rgba(255,255,255,0.02)', padding: '1.5rem', textAlign: 'left' }}>
+              <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '0.875rem', color: 'var(--color-text-3)', margin: '0 0 0.5rem', lineHeight: 1.5 }}>{item.old}</p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--color-accent)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>{item.new}</p>
+            </div>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -154,14 +157,14 @@ export function CTA() {
             (e.currentTarget as HTMLElement).style.boxShadow = '5px 5px 0px rgba(214,58,26,0.4)';
           }}
           >
-            Start for Free
+            Build Your First Playbook
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </Link>
 
           <p style={{ marginTop: '1.5rem', fontSize: '0.75rem', color: 'var(--color-text-3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            No credit card · 3 free playbooks · Cancel anytime
+            Free to start · No credit card · No boring allowed
           </p>
         </motion.div>
       </div>

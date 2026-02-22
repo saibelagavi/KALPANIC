@@ -8,8 +8,9 @@ const personas = [
     num: "02",
     icon: "🎓",
     role: "THE EDUCATOR",
-    headline: "Stop losing them at slide 3.",
-    body: "Concepts become visual journeys students actually complete. Engagement up. Confusion out.",
+    headline: "Your lessons deserve to be experienced, not just read.",
+    body: "Turn photosynthesis into a visual journey your students actually remember. Engagement up. Zone-outs eliminated.",
+    tag: "Lesson Plans → Visual Stories",
     color: "#e8890a",
     href: "/use-cases/educators",
   },
@@ -17,8 +18,9 @@ const personas = [
     num: "03",
     icon: "⚡",
     role: "THE FOUNDER",
-    headline: "Your idea deserves better than a Google Doc.",
-    body: "Transform your POC into a narrative investors feel. First impressions are everything.",
+    headline: "Your investor pitch deserves better than a Google Doc.",
+    body: "Your POC, your product spec, your vision — make it impossible to ignore. First impressions are everything.",
+    tag: "Product Docs → Compelling Narratives",
     color: "#d63a1a",
     href: "/use-cases/founders",
   },
@@ -27,9 +29,20 @@ const personas = [
     icon: "📐",
     role: "THE PM",
     headline: "SOPs your team will actually read.",
-    body: "Onboarding flows that stick. Product specs that guide. Documentation that delights.",
+    body: "Onboarding flows they'll follow. Procedures that feel like guided experiences, not instruction manuals.",
+    tag: "SOPs → Guided Systems",
     color: "#ff5c2a",
     href: "/use-cases/product-managers",
+  },
+  {
+    num: "05",
+    icon: "📣",
+    role: "THE MARKETER",
+    headline: "Product guides that feel like brand campaigns.",
+    body: "Explainers that convert. Content your audience forwards instead of files they archive and forget.",
+    tag: "Guides → Brand Experiences",
+    color: "#e8890a",
+    href: "/use-cases/marketers",
   },
 ];
 
@@ -57,7 +70,7 @@ export function PersonaShowcase() {
             fontWeight: 700,
             marginBottom: '1rem',
           }}>
-            Who is Kalpanic for?
+            03 / WHO IT&apos;S FOR
           </p>
           <h2 style={{
             fontFamily: 'var(--font-display)',
@@ -66,13 +79,22 @@ export function PersonaShowcase() {
             lineHeight: 0.95,
             letterSpacing: '0.01em',
             textTransform: 'uppercase',
-            margin: 0,
+            margin: '0 0 1rem',
           }}>
-            MADE FOR THE ONES<br />
-            <span style={{ color: 'var(--color-accent)', WebkitTextStroke: '1px var(--color-accent)' }}>
-              WHO CARE TOO MUCH.
+            BUILT FOR THE PEOPLE<br />
+            <span style={{ color: 'var(--color-accent)' }}>
+              WHO MAKE THINGS CLEAR.
             </span>
           </h2>
+          <p style={{
+            fontFamily: 'var(--font-serif)',
+            fontStyle: 'italic',
+            fontSize: '1rem',
+            color: 'var(--color-text-2)',
+            margin: 0,
+          }}>
+            Built for the people who spend their lives trying to make things understood.
+          </p>
         </motion.div>
 
         {/* Cards — horizontal editorial layout */}
@@ -123,8 +145,12 @@ export function PersonaShowcase() {
                       textTransform: 'uppercase',
                       color: p.color,
                       marginBottom: '0.625rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.75rem',
                     }}>
-                      {p.icon} {p.role}
+                      <span>{p.icon} {p.role}</span>
+                      <span style={{ padding: '0.15rem 0.5rem', border: `1px solid ${p.color}40`, borderRadius: '2px', fontSize: '0.6rem', color: p.color, opacity: 0.8 }}>{p.tag}</span>
                     </div>
                     <h3 style={{
                       fontFamily: 'var(--font-display)',

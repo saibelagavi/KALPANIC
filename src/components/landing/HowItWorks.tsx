@@ -5,31 +5,31 @@ import { motion } from "framer-motion";
 const steps = [
   {
     num: "01",
-    title: "INPUT YOUR KALPANA",
-    body: "Paste your brief, upload a doc, or type your idea. Raw input is fine — even a bullet list works.",
+    title: "UPLOAD YOUR RAW CONTENT",
+    body: "Paste your SOP, notes, lesson plan, or product spec. Rough is fine — that's the point.",
+    tag: "txt / pdf / docx / paste",
     color: "#d63a1a",
-    icon: "✍",
   },
   {
     num: "02",
-    title: "PICK A VINYAS",
-    body: "Choose from AI-suggested layout frameworks. Educational, Sales, Technical, or POC — each built for your goal.",
+    title: "STRUCTURE YOUR FLOW",
+    body: "Pick a Vinyas — a layout framework built for your content type. Educational, Sales, Technical, or POC.",
+    tag: "AI-suggested layouts",
     color: "#e8890a",
-    icon: "⊞",
   },
   {
     num: "03",
-    title: "APPLY YOUR ALAUKIK",
-    body: "Select from 5 extraordinary aesthetic themes. Scan your website URL and we'll match your brand soul automatically.",
+    title: "STYLE YOUR BRAND",
+    body: "Apply an Alaukik theme. Or scan your website URL and we'll match your brand's soul automatically.",
+    tag: "5 theme bundles",
     color: "#ff5c2a",
-    icon: "◈",
   },
   {
     num: "04",
-    title: "PUBLISH & CAPTIVATE",
-    body: "Share a permanent link. Viewers experience Play Mode — a guided, animated story through your content.",
+    title: "PUBLISH YOUR PLAYBOOK",
+    body: "Share a link. Your audience gets a guided, visual experience. You get engagement data.",
+    tag: "< 15 minutes total",
     color: "#d63a1a",
-    icon: "→",
   },
 ];
 
@@ -48,18 +48,23 @@ export function HowItWorks() {
           viewport={{ once: true }}
           style={{ marginBottom: '5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem' }}
         >
-          <h2 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-            color: 'var(--color-text)',
-            lineHeight: 0.95,
-            letterSpacing: '0.01em',
-            textTransform: 'uppercase',
-            margin: 0,
-          }}>
-            FOUR STEPS TO<br />
-            <span style={{ color: 'var(--color-accent)' }}>EXTRAORDINARY.</span>
-          </h2>
+          <div>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 700, marginBottom: '1rem' }}>
+              05 / THE PROCESS
+            </p>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              color: 'var(--color-text)',
+              lineHeight: 0.95,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              margin: 0,
+            }}>
+              FOUR STEPS TO<br />
+              <span style={{ color: 'var(--color-accent)' }}>EXTRAORDINARY.</span>
+            </h2>
+          </div>
           <p style={{
             fontFamily: 'var(--font-serif)',
             fontStyle: 'italic',
@@ -69,7 +74,7 @@ export function HowItWorks() {
             lineHeight: 1.65,
             margin: 0,
           }}>
-            From raw idea to published playbook — in under 15 minutes.
+            Four steps from raw idea to extraordinary playbook. Under 15 minutes.
           </p>
         </motion.div>
 
@@ -138,10 +143,24 @@ export function HowItWorks() {
                   color: 'var(--color-text-2)',
                   lineHeight: 1.65,
                   maxWidth: '560px',
-                  margin: 0,
+                  margin: '0 0 0.75rem',
                 }}>
                   {step.body}
                 </p>
+                <span style={{
+                  display: 'inline-block',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.65rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: step.color,
+                  border: `1px solid ${step.color}40`,
+                  borderRadius: '2px',
+                  padding: '0.2rem 0.6rem',
+                }}>
+                  {step.tag}
+                </span>
               </div>
             </motion.div>
           ))}
