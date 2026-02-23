@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FloatEl, SketchStar, SketchCrown } from "./SketchElements";
 
 export function BeforeAfter() {
   return (
@@ -11,6 +12,12 @@ export function BeforeAfter() {
       position: 'relative',
       overflow: 'hidden',
     }}>
+      <FloatEl x="-3%" y="20%" delay={0.7} amplitude={9} duration={6.5}>
+        <SketchStar />
+      </FloatEl>
+      <FloatEl x="90%" y="60%" delay={1.2} amplitude={11} duration={5.5}>
+        <SketchCrown />
+      </FloatEl>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, x: -30 }}

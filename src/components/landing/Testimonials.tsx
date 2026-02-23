@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FloatEl, SketchFigureWriter, SketchStar } from "./SketchElements";
 
 const testimonials = [
   {
@@ -31,7 +32,13 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section style={{ padding: '8rem 2rem', background: 'var(--color-bg)', borderTop: '1px solid var(--color-border)' }}>
+    <section style={{ padding: '8rem 2rem', background: 'var(--color-bg)', borderTop: '1px solid var(--color-border)', position: 'relative', overflow: 'hidden' }}>
+      <FloatEl x="-3%" y="18%" delay={0.5} amplitude={9} duration={6}>
+        <SketchFigureWriter />
+      </FloatEl>
+      <FloatEl x="88%" y="65%" delay={1.4} amplitude={11} duration={7}>
+        <SketchStar />
+      </FloatEl>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

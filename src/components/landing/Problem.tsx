@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FloatEl, SketchEye, SketchQuill } from "./SketchElements";
 
 const problems = [
   {
@@ -100,6 +101,12 @@ export function Problem() {
           style={{ width: '100%', display: 'block' }}
         />
       </div>
+      <FloatEl x="88%" y="15%" delay={0.5} amplitude={8} duration={6}>
+        <SketchEye />
+      </FloatEl>
+      <FloatEl x="85%" y="72%" delay={1.5} amplitude={10} duration={7}>
+        <SketchQuill />
+      </FloatEl>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Section header */}
         <motion.div

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { FloatEl, SketchFigurePresenter, SketchArrow } from "./SketchElements";
 
 const personas = [
   {
@@ -52,7 +53,15 @@ export function PersonaShowcase() {
       padding: '8rem 2rem',
       background: 'var(--color-bg)',
       borderTop: '1px solid var(--color-border)',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      <FloatEl x="-3%" y="10%" delay={0.6} amplitude={10} duration={6.5}>
+        <SketchFigurePresenter />
+      </FloatEl>
+      <FloatEl x="89%" y="55%" delay={1.3} amplitude={7} duration={5} rotate={false}>
+        <SketchArrow />
+      </FloatEl>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <motion.div

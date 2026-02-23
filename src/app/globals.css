@@ -69,6 +69,21 @@ h6 {
   border-radius: var(--radius-sm);
 }
 
+/* ── Responsive: hide floating sketch decorations on small screens ── */
+@media (max-width: 900px) {
+  .sketch-float {
+    display: none !important;
+  }
+}
+
+/* ── Responsive: stack grids on mobile ── */
+@media (max-width: 640px) {
+  section {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
 /* Utility classes using theme tokens */
 @layer utilities {
   .text-display {

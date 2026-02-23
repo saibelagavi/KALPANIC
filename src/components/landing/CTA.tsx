@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { FloatEl, SketchFlame, SketchCrown } from "./SketchElements";
 
 export function CTA() {
   return (
@@ -53,6 +54,13 @@ export function CTA() {
           style={{ width: '100%', display: 'block' }}
         />
       </div>
+
+      <FloatEl x="-2%" y="15%" delay={0.9} amplitude={8} duration={6.5}>
+        <SketchFlame />
+      </FloatEl>
+      <FloatEl x="-3%" y="60%" delay={1.7} amplitude={10} duration={5.5}>
+        <SketchCrown />
+      </FloatEl>
 
       <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FloatEl, SketchFigureThinking, SketchLightbulb } from "./SketchElements";
 
 const steps = [
   {
@@ -58,6 +59,12 @@ export function HowItWorks() {
           style={{ width: '100%', display: 'block' }}
         />
       </div>
+      <FloatEl x="-3%" y="12%" delay={0.8} amplitude={9} duration={7}>
+        <SketchFigureThinking />
+      </FloatEl>
+      <FloatEl x="-2%" y="68%" delay={1.6} amplitude={8} duration={5.5}>
+        <SketchLightbulb />
+      </FloatEl>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <motion.div
