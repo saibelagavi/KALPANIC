@@ -182,8 +182,32 @@ export function Hero() {
 
       {/* Floating sketch figures */}
       <FloatEl x="-2%" y="18%" delay={0} amplitude={10} duration={6}><SketchFigureWriter /></FloatEl>
-      <FloatEl x="0%" y="58%" delay={1.2} amplitude={14} duration={7}><SketchFigureThinking /></FloatEl>
-      <FloatEl x="86%" y="12%" delay={0.4} amplitude={12} duration={5.5}><SketchFigurePresenter /></FloatEl>
+      {/* GenZ torso — right side hero */}
+      <FloatEl x="76%" y="3%" delay={0.4} amplitude={8} duration={7} rotate={false}>
+        <img
+          src="/roman-empire/rm324-element-boom-07a.jpg"
+          alt=""
+          width={210}
+          style={{
+            display: 'block',
+            filter: 'drop-shadow(0 12px 28px rgba(80,40,0,0.18))',
+            opacity: 0.92,
+          }}
+        />
+      </FloatEl>
+      {/* Goddess bust — left side */}
+      <FloatEl x="-4%" y="48%" delay={1.0} amplitude={11} duration={6.5} rotate={false}>
+        <img
+          src="/roman-empire/rm324-element-baifernn-05.jpg"
+          alt=""
+          width={175}
+          style={{
+            display: 'block',
+            filter: 'drop-shadow(0 8px 20px rgba(80,40,0,0.14))',
+            opacity: 0.88,
+          }}
+        />
+      </FloatEl>
       <FloatEl x="88%" y="54%" delay={1.8} amplitude={9} duration={6.5}><SketchDocument /></FloatEl>
       <FloatEl x="78%" y="44%" delay={0.8} amplitude={6} duration={4} rotate={false}><SketchArrow /></FloatEl>
       <FloatEl x="82%" y="80%" delay={2} amplitude={11} duration={5}><SketchStar /></FloatEl>

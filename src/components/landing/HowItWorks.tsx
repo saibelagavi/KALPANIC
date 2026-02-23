@@ -39,7 +39,25 @@ export function HowItWorks() {
       padding: '8rem 2rem',
       background: 'var(--color-bg-2)',
       borderTop: '1px solid var(--color-border)',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      {/* Watercolor facade — decorative right accent */}
+      <div style={{
+        position: 'absolute',
+        right: '-20px',
+        top: '10%',
+        width: '200px',
+        pointerEvents: 'none',
+        zIndex: 0,
+        opacity: 0.15,
+      }}>
+        <img
+          src="/roman-empire/6807.jpg"
+          alt=""
+          style={{ width: '100%', display: 'block' }}
+        />
+      </div>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <motion.div

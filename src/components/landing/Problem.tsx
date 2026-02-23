@@ -80,7 +80,26 @@ export function Problem() {
       padding: "6rem 2rem",
       background: "var(--color-bg)",
       borderTop: "1px solid var(--color-border)",
+      position: "relative",
+      overflow: "hidden",
     }}>
+      {/* Ornate corbel — decorative left accent */}
+      <div style={{
+        position: 'absolute',
+        left: '-30px',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        width: '180px',
+        pointerEvents: 'none',
+        zIndex: 0,
+        opacity: 0.13,
+      }}>
+        <img
+          src="/roman-empire/pd109-pdobj00129-image.jpg"
+          alt=""
+          style={{ width: '100%', display: 'block' }}
+        />
+      </div>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Section header */}
         <motion.div

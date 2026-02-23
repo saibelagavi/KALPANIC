@@ -37,6 +37,23 @@ export function CTA() {
         pointerEvents: 'none',
       }} />
 
+      {/* Roman profile — decorative right accent */}
+      <div style={{
+        position: 'absolute',
+        right: '-60px',
+        bottom: '-20px',
+        width: '380px',
+        pointerEvents: 'none',
+        zIndex: 0,
+        opacity: 0.12,
+      }}>
+        <img
+          src="/roman-empire/rm324-element-baifernn-02.jpg"
+          alt=""
+          style={{ width: '100%', display: 'block' }}
+        />
+      </div>
+
       <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
 
         {/* Headline */}
