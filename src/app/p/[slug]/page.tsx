@@ -19,8 +19,11 @@ export default async function PublishedPlaybookPage({ params }: { params: Promis
     notFound();
   }
 
-  const blocks: Block[] = (playbook.content as { blocks?: Block[] })?.blocks ?? [];
-  const theme: string = playbook.theme_id ?? 'Obsidian';
+  type ContentShape = { blocks?: Block[]; theme?: string };
+  const content = playbook.content as ContentShape ?? {};
+  const blocks: Block[] = content.blocks ?? [];
+  // Read theme from content JSON first (most reliable), fall back to theme_id column
+  const theme: string = content.theme ?? playbook.theme_id ?? 'Obsidian';
 
   return <PublishedView title={playbook.title} blocks={blocks} theme={theme} slug={slug} />;
 }

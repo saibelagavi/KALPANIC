@@ -37,7 +37,7 @@ export function ThemePanel({ playbookId, onPreview }: Props) {
       const { data, error } = await supabase
         .from('playbooks')
         .update({
-          content:      { blocks },
+          content:      { blocks, theme: activeTheme },
           theme_id:     activeTheme,
           status:       'published',
           is_public:    true,
