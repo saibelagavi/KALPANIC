@@ -1,5 +1,9 @@
-export default async function PlaybookEditorPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+'use client';
+
+import { use } from 'react';
+
+export default function PlaybookEditorPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   return (
     <div style={{
       display: 'grid',
