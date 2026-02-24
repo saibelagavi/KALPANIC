@@ -1,4 +1,5 @@
-export default function PlaybookEditorPage({ params }: { params: { id: string } }) {
+export default async function PlaybookEditorPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <div style={{
       display: 'grid',
@@ -92,7 +93,7 @@ export default function PlaybookEditorPage({ params }: { params: { id: string } 
             Drag elements here or click to add
           </p>
           <p style={{ color: 'var(--color-text-3)', fontSize: '0.75rem' }}>
-            Playbook ID: {params.id}
+            Playbook ID: {id}
           </p>
         </div>
       </main>
