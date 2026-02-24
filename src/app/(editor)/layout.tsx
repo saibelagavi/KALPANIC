@@ -1,9 +1,15 @@
-import Link from "next/link";
+import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
 
-export default function EditorLayout({ children }: { children: React.ReactNode }) {
+export default async function EditorLayout({ children }: { children: React.ReactNode }) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const displayName = user?.email?.split('@')[0] ?? 'U';
+  const initials = displayName.slice(0, 2).toUpperCase();
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--color-bg)' }}>
-      {/* Editor top bar */}
       <header style={{
         height: '56px',
         display: 'flex',
@@ -27,26 +33,24 @@ export default function EditorLayout({ children }: { children: React.ReactNode }
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          {/* User avatar placeholder */}
+          {user && (
+            <span style={{ fontSize: '0.8rem', color: 'var(--color-text-2)' }}>
+              {user.email}
+            </span>
+          )}
           <div style={{
-            width: 32,
-            height: 32,
+            width: 32, height: 32,
             borderRadius: '50%',
             background: 'linear-gradient(135deg, var(--color-accent) 0%, #c084fc 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '0.75rem',
-            fontWeight: 700,
-            color: 'white',
-            cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '0.72rem', fontWeight: 700, color: 'white',
+            cursor: 'pointer', flexShrink: 0,
           }}>
-            U
+            {initials}
           </div>
         </div>
       </header>
 
-      {/* Content */}
       <div style={{ flex: 1 }}>
         {children}
       </div>
