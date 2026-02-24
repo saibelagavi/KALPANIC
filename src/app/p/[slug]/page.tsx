@@ -1,4 +1,5 @@
-export default function PublishedPlaybookPage({ params }: { params: { slug: string } }) {
+export default async function PublishedPlaybookPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   return (
     <div style={{
       minHeight: '100vh',
@@ -25,7 +26,7 @@ export default function PublishedPlaybookPage({ params }: { params: { slug: stri
           marginBottom: '1rem',
           letterSpacing: '-0.02em',
         }}>
-          {params.slug.replace(/-/g, ' ')}
+          {slug.replace(/-/g, ' ')}
         </h1>
         <p style={{ color: 'var(--color-text-2)', marginBottom: '2rem' }}>
           This playbook is coming soon.
