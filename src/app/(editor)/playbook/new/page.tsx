@@ -68,9 +68,14 @@ export default function NewPlaybookPage() {
       }
 
       // Ensure a profile row exists (covers OAuth sign-ins)
-      await supabase
+      const { error: profileError } = await supabase
         .from("profiles")
         .upsert({ id: user.id }, { onConflict: "id", ignoreDuplicates: true });
+      if (profileError) {
+        setError("Could not create your profile: " + profileError.message);
+        setLoading(false);
+        return;
+      }
 
       // Build a URL-safe unique slug from the title
       const base = title
