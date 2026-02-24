@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 const vinyasOptions = [
   {
@@ -51,6 +52,64 @@ export default function NewPlaybookPage() {
   const [persona, setPersona] = useState("");
   const [selectedVinyas, setSelectedVinyas] = useState("");
   const [selectedTheme, setSelectedTheme] = useState("obsidian");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleCreate() {
+    setLoading(true);
+    setError("");
+    try {
+      const supabase = createClient();
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError || !user) {
+        setError("You must be signed in to create a playbook.");
+        setLoading(false);
+        return;
+      }
+
+      // Ensure a profile row exists (covers OAuth sign-ins)
+      await supabase
+        .from("profiles")
+        .upsert({ id: user.id }, { onConflict: "id", ignoreDuplicates: true });
+
+      // Build a URL-safe unique slug from the title
+      const base = title
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .slice(0, 48);
+      const slug = `${base}-${Math.random().toString(36).slice(2, 7)}`;
+
+      const { data, error: insertError } = await supabase
+        .from("playbooks")
+        .insert({
+          owner_id: user.id,
+          title,
+          slug,
+          kalpana: { description, goal, persona },
+          vinyas_id: selectedVinyas,
+          theme_id: selectedTheme,
+          status: "draft",
+          is_public: false,
+          content: {},
+          nakshi: [],
+        })
+        .select("id")
+        .single();
+
+      if (insertError || !data) {
+        setError(insertError?.message ?? "Failed to create playbook. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      router.push(`/playbook/${data.id}`);
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
+    }
+  }
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
@@ -179,10 +238,6 @@ export default function NewPlaybookPage() {
             </div>
           </div>
 
-          {/* Suppress unused variable warnings for Phase 1 */}
-          <input type="hidden" value={description} readOnly />
-          <input type="hidden" value={goal} readOnly />
-
           <div style={{ marginTop: '2.5rem' }}>
             <button
               onClick={() => setStep(2)}
@@ -309,19 +364,34 @@ export default function NewPlaybookPage() {
             ))}
           </div>
 
-          <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem' }}>
-            <button onClick={() => setStep(2)} style={{
+          {error && (
+            <div style={{
+              marginTop: '1.5rem',
+              padding: '0.75rem 1rem',
+              background: 'rgba(200,48,48,0.08)',
+              border: '1px solid rgba(200,48,48,0.3)',
+              borderRadius: 'var(--radius-md)',
+              color: 'var(--color-error)',
+              fontSize: '0.875rem',
+            }}>
+              {error}
+            </div>
+          )}
+
+          <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
+            <button onClick={() => setStep(2)} disabled={loading} style={{
               padding: '0.875rem 1.5rem',
               background: 'var(--color-surface)',
               color: 'var(--color-text-2)',
               border: '1px solid var(--color-border)',
               borderRadius: 'var(--radius-md)',
-              cursor: 'pointer',
+              cursor: loading ? 'not-allowed' : 'pointer',
               fontSize: '0.9rem',
+              opacity: loading ? 0.5 : 1,
             }}>
               ← Back
             </button>
-            <button onClick={() => router.push('/dashboard')} style={{
+            <button onClick={handleCreate} disabled={loading} style={{
               padding: '0.875rem 2rem',
               background: 'var(--color-accent)',
               color: 'white',
@@ -329,10 +399,25 @@ export default function NewPlaybookPage() {
               borderRadius: 'var(--radius-md)',
               fontSize: '0.95rem',
               fontWeight: 600,
-              cursor: 'pointer',
-              boxShadow: '0 0 30px rgba(124,106,245,0.3)',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              opacity: loading ? 0.7 : 1,
+              boxShadow: '0 0 30px rgba(214,58,26,0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
             }}>
-              Create Playbook ✦
+              {loading ? (
+                <>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                      <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/>
+                    </path>
+                  </svg>
+                  Creating…
+                </>
+              ) : (
+                <>Create Playbook ✦</>
+              )}
             </button>
           </div>
         </div>
