@@ -38,6 +38,7 @@ export function ThemePanel({ playbookId, onPreview }: Props) {
         .from('playbooks')
         .update({
           content:      { blocks },
+          theme_id:     activeTheme,
           status:       'published',
           is_public:    true,
           published_at: new Date().toISOString(),
