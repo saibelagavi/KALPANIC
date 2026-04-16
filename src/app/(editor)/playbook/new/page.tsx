@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { AgentCanvas } from "@/components/editor/AgentCanvas";
 
 const vinyasOptions = [
   {
@@ -54,6 +55,8 @@ export default function NewPlaybookPage() {
   const [selectedTheme, setSelectedTheme] = useState("obsidian");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  // Step 4: AI generation
+  const [generatingPlaybookId, setGeneratingPlaybookId] = useState<string | null>(null);
 
   async function handleCreate() {
     setLoading(true);
@@ -109,7 +112,9 @@ export default function NewPlaybookPage() {
         return;
       }
 
-      router.push(`/playbook/${data.id}`);
+      // Step 4: hand off to AgentCanvas — it calls /api/generate-playbook via SSE
+      setGeneratingPlaybookId(data.id);
+      setLoading(false);
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
@@ -127,6 +132,21 @@ export default function NewPlaybookPage() {
     outline: 'none',
     fontFamily: 'var(--font-body)',
   };
+
+  // Step 4: full-screen AI generation canvas
+  if (generatingPlaybookId) {
+    return (
+      <AgentCanvas
+        playbookId={generatingPlaybookId}
+        title={title}
+        description={description}
+        goal={goal}
+        persona={persona}
+        vinyas={selectedVinyas}
+        theme={selectedTheme}
+      />
+    );
+  }
 
   return (
     <div style={{ maxWidth: '760px', margin: '0 auto', padding: '3rem 2rem' }}>
@@ -418,10 +438,10 @@ export default function NewPlaybookPage() {
                       <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/>
                     </path>
                   </svg>
-                  Creating…
+                  Starting AI…
                 </>
               ) : (
-                <>Create Playbook ✦</>
+                <>Generate with AI ✦</>
               )}
             </button>
           </div>

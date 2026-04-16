@@ -42,6 +42,8 @@ interface EditorStore {
   moveBlock: (id: string, direction: 'up' | 'down') => void;
   duplicateBlock: (id: string) => void;
   setTheme: (theme: string) => void;
+  /** Load AI-generated or Supabase-saved blocks into the editor */
+  setBlocks: (blocks: Block[], theme?: string) => void;
 }
 
 function uid() {
@@ -136,4 +138,11 @@ export const useEditorStore = create<EditorStore>((set) => ({
     }),
 
   setTheme: (theme) => set({ activeTheme: theme }),
+
+  setBlocks: (blocks, theme) =>
+    set((state) => ({
+      blocks,
+      selectedBlockId: null,
+      ...(theme ? { activeTheme: theme } : { activeTheme: state.activeTheme }),
+    })),
 }));
