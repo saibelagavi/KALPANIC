@@ -119,9 +119,9 @@ export async function generatePlaybookContent(input: GeneratePlaybookInput): Pro
       messages: [
         { role: 'user', content: buildPrompt(input) },
       ],
-      max_tokens: 32768,
+      maxTokens: 32768,
       temperature: 1,
-      top_p: 1,
+      topP: 1,
     },
   });
 
